@@ -8,9 +8,10 @@ variable "instance_name" {
   type = string
 }
 
-variable "security_group_alb_id" {
+variable "security_group_alb_ids" {
   description = "ID of secrity group for the alb"
-  type = string
+  type = list(string)
+  default = []
 }
 
 variable "vpc_name" {

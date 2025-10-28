@@ -18,8 +18,8 @@ variable "virtualization_type" {
 
 variable "ami_owners" {
   description = "onerID of AMI"
-  type        = string
-  default     = "amazon"
+  type        = list(string)
+  default     = ["amazon"]
 }
 
 
@@ -39,8 +39,8 @@ variable "subnet_id" {
   type        = string
 }
 
-variable "security_group_ids" {
-  description = "security group be attached to the instance"
+variable "security_group_ec2_ids" {
+  description = "security group be attached to the EC2 instance"
   type        = list(string)
   default     = []
 }

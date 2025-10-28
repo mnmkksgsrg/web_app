@@ -12,7 +12,7 @@ module "ec2" {
 
   instance_name     = var.instance_name
   subnet_id         = module.vpc.public_subnet_ids[0]
-  security_group_ids = var.security_group_ids
+  security_group_ec2_ids = module.security_group.ec2_security_group_ids
 }
 
 module "alb" {
@@ -24,7 +24,7 @@ module "alb" {
   public_subnet_ids = module.vpc.public_subnet_ids
   instance_name = var.instance_name
   instance_id = module.ec2.instance_id
-  security_group_alb_id = module.security_group.alb_security_group_ids
+  security_group_alb_ids = module.security_group.alb_security_group_ids
 }
 
 module "security_group" {
