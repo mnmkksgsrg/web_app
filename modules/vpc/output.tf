@@ -30,7 +30,7 @@ output "public_route_table_id" {
 
 output "private_route_table_id" {
   description = "ID of private route table"
-  value       = caws_route_table.private.id
+  value       = aws_route_table.private.id
 }
 
 

@@ -19,7 +19,7 @@ variable "virtualization_type" {
 variable "ami_owners" {
   description = "onerID of AMI"
   type        = string
-  default     = ["amazon"]
+  default     = "amazon"
 }
 
 

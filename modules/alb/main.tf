@@ -19,7 +19,6 @@ resource "aws_lb_target_group" "ec2" {
 
   tags = {
     Name = "${var.vpc_name}_target_group"
-    }
   }
 }
 

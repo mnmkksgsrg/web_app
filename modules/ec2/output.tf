@@ -18,7 +18,7 @@ output "private_ip" {
   value       = aws_instance.this.private_ip
 }
 
-ouput "availability_zone" {
+output "availability_zone" {
   description = "AZ teh EC2 instance in"
   value       = aws_instance.this.availability_zone
 }

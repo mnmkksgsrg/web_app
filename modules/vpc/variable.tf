@@ -11,11 +11,11 @@ variable "vpc_cidr" {
 variable "public_subnets" {
   description = "CIDR and AZ at public_subnet"
   type        = map(object({ cidr_block = string }))
-  default {}
+  default = {}
 }
 
 variable "private_subnets" {
   description = "CIDR and AZ at prvate_subnet"
   type        = map(object({ cidr_block = string }))
-  default {}
+  default = {}
 }

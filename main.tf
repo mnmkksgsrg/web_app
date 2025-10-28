@@ -11,16 +11,20 @@ module "ec2" {
   source = "./modules/ec2"
 
   instance_name     = var.instance_name
-  subnet_id         = module.vpc.publis_subnet_ids[0]
-  security_group_id = module.security_group.ec2_security_group_id
+  subnet_id         = module.vpc.public_subnet_ids[0]
+  security_group_ids = var.security_group_ids
 }
 
 module "alb" {
   source = "./modules/alb"
 
   alb_name = var.alb_name
+  vpc_name = var.vpc_name
   vpc_id   = module.vpc.vpc_id
-  subnets  = module.alb.public_subnet_ids
+  public_subnet_ids = module.vpc.public_subnet_ids
+  instance_name = var.instance_name
+  instance_id = module.ec2.instance_id
+  security_group_alb_id = module.security_group.alb_security_group_ids
 }
 
 module "security_group" {

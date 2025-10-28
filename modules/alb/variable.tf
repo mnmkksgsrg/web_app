@@ -1,5 +1,5 @@
 variable "alb_name" {
-  description "ALB Name"
+  description = "ALB Name"
   type = string
 }
 
@@ -23,8 +23,8 @@ variable "vpc_id" {
   type = string
 }
 
-variable "public_subnets_ids" {
-  description = "list of public subnets IDs"
+variable "public_subnet_ids" {
+  description = "list of public subnet IDs"
   type = list(string)
 }
 

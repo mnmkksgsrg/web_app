@@ -31,7 +31,7 @@ resource "aws_route_table" "public" {
 
   route {
     cidr_block = "0.0.0.0/0"
-    gateway_id = aws.internet_gateway.this.id
+    gateway_id = aws_internet_gateway.this.id
   }
 
   tags = {
@@ -47,14 +47,14 @@ resource "aws_route_table_association" "public" {
 }
 
 resource "aws_subnet" "private" {
-  for_each = var_private_subnets
+  for_each = var.private_subnets
 
   vpc_id            = aws_vpc.this.id
-  cidr_block        = each.value.cider_block
+  cidr_block        = each.value.cidr_block
   availability_zone = each.key
 
   tags = {
-    Name = "${var.vpc_name}_private_subnet_${each_key}"
+    Name = "${var.vpc_name}_private_subnet_${each.key}"
   }
 }
 
