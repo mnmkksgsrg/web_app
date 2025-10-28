@@ -8,7 +8,7 @@ public_subnets = {
 }
 
 
-private_subnet = {
+private_subnets = {
   "ap-northeast-1a" = {
     cidr_block = "10.0.110.0/24"
   }

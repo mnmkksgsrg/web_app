@@ -4,14 +4,14 @@ resource "aws_lb" "alb" {
   load_balancer_type = "application"
   security_groups = var.security_group_alb_id
   subnets = var.public_subnet_ids
-  enable_delection_protection = true
+  enable_deletion_protection = true
 
   tags = {
     Name = "${var.vpc_name}_alb"
   }
 }
 
-resource = "aws_lb_target_group" "ec2" {
+resource "aws_lb_target_group" "ec2" {
   name = "${var.vpc_name}_target_group"
   port = 80
   protocol = "HTTP"
@@ -24,7 +24,7 @@ resource = "aws_lb_target_group" "ec2" {
 }
 
 resource "aws_lb_target_group_attachment" "ec2" {
-  target_group_arn = aws_lb_target.ec2.arn
+  target_group_arn = aws_lb_target_group.ec2.arn
   target_id = var.instance_id
   port = 80
 }

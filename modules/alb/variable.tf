@@ -1,4 +1,4 @@
-variable = "alb_name" {
+variable "alb_name" {
   description "ALB Name"
   type = string
 }
