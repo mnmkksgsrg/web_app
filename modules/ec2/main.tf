@@ -1,29 +1,22 @@
-data "aws_ami" "ubuntu" {
-  most_recent = var.ami_most_recent
+data "aws_ami" "amazon_linux" {
+  most_recent = true
+  owners      = ["amazon"]
 
   filter {
     name   = "name"
-    values = [var.ami_name_pattern]
+    values = ["amzn2-ami-hvm-*-x86_64-gp2"]
   }
-
-  filter {
-    name   = "virtualization_type"
-    values = [var.virtualization_type]
-  }
-
-  owners = var.ami_owners
 }
 
 resource "aws_instance" "this" {
-  ami                    = data.aws_ami.ubuntu.id
-  instance_type          = var.instance_type
+  ami                    = data.aws_ami.amazon_linux.id
+  instance_type          = "t3.micro"
   subnet_id              = var.subnet_id
   vpc_security_group_ids = var.security_group_ec2_ids
-  key_name               = var.key_name
+  associate_public_ip_address = true
 
   tags = {
     Name = var.instance_name
   }
 }
-
 

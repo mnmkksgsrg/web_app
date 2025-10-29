@@ -11,15 +11,13 @@ variable "vpc_cidr" {
 }
 
 variable "public_subnets" {
-  description = "CIDR and AZ of publc subnet"
+  description = "CIDR and AZ of public subnets"
   type        = map(object({ cidr_block = string }))
-  default     = {}
 }
 
 variable "private_subnets" {
-  description = "CIDR and AZ of public subnet"
+  description = "CIDR and AZ of private subnets"
   type        = map(object({ cidr_block = string }))
-  default     = {}
 }
 
 variable "instance_name" {
@@ -33,5 +31,4 @@ variable "alb_name" {
   type        = string
   default     = "my_alb"
 }
-
 
