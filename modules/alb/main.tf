@@ -3,7 +3,7 @@ resource "aws_lb" "alb" {
   load_balancer_type = "application"
   security_groups = var.security_group_alb_ids
   subnets = var.public_subnet_ids
-  enable_deletion_protection = true
+  enable_deletion_protection = false
 
   tags = {
     Name = "${var.vpc_name}_alb"

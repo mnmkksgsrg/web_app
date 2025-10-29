@@ -4,7 +4,14 @@ module "vpc" {
   vpc_name        = var.vpc_name
   vpc_cidr        = var.vpc_cidr
   public_subnets  = var.public_subnets
-  private_subnets = var.public_subnets
+  private_subnets = var.private_subnets
+}
+
+module "security_group" {
+  source = "./modules/security_group"
+
+  vpc_name = var.vpc_name
+  vpc_id   = module.vpc.vpc_id
 }
 
 module "ec2" {
@@ -25,12 +32,5 @@ module "alb" {
   instance_name = var.instance_name
   instance_id = module.ec2.instance_id
   security_group_alb_ids = module.security_group.alb_security_group_ids
-}
-
-module "security_group" {
-  source = "./modules/security_group"
-
-  vpc_name = var.vpc_name
-  vpc_id   = module.vpc.vpc_id
 }
 
